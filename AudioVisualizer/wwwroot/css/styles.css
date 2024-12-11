@@ -1,0 +1,146 @@
+﻿:root {
+    --color-primary: #ff00ff;
+    --color-secondary: #00ffff;
+    --color-background: #000;
+    --color-text: #fff;
+    --spacing-unit: 20px;
+    --button-padding-large: 12px 24px;
+    --button-padding-small: 4px 8px;
+    --button-border-radius: 5px;
+    --transition-default: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.visualizer-container {
+    width: 90%;
+    max-width: 1400px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#visualizer {
+    width: 100%;
+    height: 70vh;
+    display: block;
+    transform: translateX(10%); /* This shifts the visualizer right as a lot of songs dont hit the right side of the visualizer making it look off center, set to 0 if it looks odd */
+}
+
+.controls {
+    padding: var(--spacing-unit);
+    text-align: center;
+    width: 100%;
+    order: -1;
+    margin-bottom: var(--spacing-unit);
+}
+
+.button {
+    border: none;
+    padding: var(--button-padding-large);
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: var(--button-border-radius);
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform var(--transition-default), box-shadow var(--transition-default);
+}
+
+.button--primary {
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-background);
+}
+
+    .button--primary:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+    }
+
+.instructions {
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 0.875rem;
+    margin: var(--spacing-unit) auto;
+    max-width: 600px;
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
+.controls-bottom {
+    width: 100%;
+    text-align: center;
+}
+
+.fullscreen-mode .title-container,
+.fullscreen-mode .instructions,
+.fullscreen-mode #startButton {
+    display: none;
+}
+
+.fullscreen-mode #visualizer {
+    height: 100vh;
+    transform: none;
+}
+
+.button--small {
+    padding: var(--button-padding-small);
+    font-size: 0.6875rem;
+    margin: 8px auto 0;
+    background: transparent;
+    color: var(--color-text);
+    opacity: 0.3;
+    border: 1px solid var(--color-text);
+    display: block;
+    transition: opacity var(--transition-default);
+}
+
+    .button--small:hover {
+        opacity: 0.8;
+        transform: none;
+        box-shadow: none;
+    }
+
+.error-message {
+    color: var(--color-primary);
+    margin: var(--spacing-unit) 0;
+}
+
+.title {
+    margin-bottom: var(--spacing-unit);
+    font-size: 2.25rem;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.title--3d {
+    color: var(--color-text);
+    text-shadow: 1px 1px 1px var(--color-primary), 2px 2px 1px var(--color-secondary), 3px 3px 1px var(--color-primary), 4px 4px 1px var(--color-secondary), 5px 5px 8px rgba(0, 0, 0, 0.4);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotateX(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotateX(5deg);
+    }
+}
